@@ -44,4 +44,5 @@ class DataModel:
             num = num - 1
           except StopIteration as e:
             ri = ri + 1
+            break
     return self.data[:req_num]

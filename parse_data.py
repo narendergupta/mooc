@@ -8,8 +8,7 @@ def main(argv):
     train_count = int(argv[0])
   dm = DataModel()
   lines = dm.get_data(train_count)
-  for i in range(len(lines)):
-    print(lines[i])
+  print(lines[-1])
 
 
 if  __name__ == '__main__':
