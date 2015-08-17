@@ -5,10 +5,9 @@ import sys
 
 
 def main(args):
-    train_count = -1
     dm = DataModel()
-    dm.read_data(to_read_count=10)
-    print(dm.data)
+    dm.read_data(to_read_count=10, normalize_data=True)
+    dm.write_data('../data/data_imp.csv')
 
 
 if  __name__ == '__main__':
