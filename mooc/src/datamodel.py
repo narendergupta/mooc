@@ -9,8 +9,8 @@ import statistics as stat
 
 class DataModel:
     """Class that parses raw data"""
-    def __init__(self):
-        self.data_file = '../data/data.csv'
+    def __init__(self, data_file='../data/data.csv'):
+        self.data_file = data_file
 
 
     def read_data(self, to_read_count=-1, normalize_data=False):
@@ -26,7 +26,7 @@ class DataModel:
                     break
         # Normalize various features of datapoints
         if normalize_data is True:
-            self.normalize_data()
+            self.__normalize_data()
         return None
 
 
@@ -40,7 +40,7 @@ class DataModel:
         return None
 
 
-    def normalize_data(self):
+    def __normalize_data(self):
         norm_data = []
         for row in self.data:
             (row[INSTITUTE], row[COURSE_NAME], row[SEM_YEAR], row[SEM_TERM]) = \
@@ -71,13 +71,13 @@ class DataModel:
     def __normalize_date(self, value):
         if value == '':
             return ('','','')
-        value = datetime.strptime(value, '%Y-%m-%d')
+        value = datetime.strptime(value, '%m/%d/%Y')
         return (value.month, value.day, value.year)
 
 
     def __days_between(self, d1, d2):
-        d1 = datetime.strptime(d1, '%Y-%m-%d')
-        d2 = datetime.strptime(d2, '%Y-%m-%d')
+        d1 = datetime.strptime(d1, '%m/%d/%Y')
+        d2 = datetime.strptime(d2, '%m/%d/%Y')
         return abs((d2-d1).days)
 
 
