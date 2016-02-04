@@ -1,4 +1,5 @@
 from datamodel import DataModel
+from experimenter import Experimenter
 
 import argparse
 import sys
@@ -8,7 +9,9 @@ def main(args):
     dm = DataModel(args.data_file)
     dm.read_data(to_read_count=args.data_rows_to_read,
             normalize_data=True)
-    dm.write_data('../data/data_norm.csv')
+    #dm.write_data('../data/data_norm.csv')
+    exp = Experimenter(dm)
+    exp.perform_dummy_experiment()
 
 
 if  __name__ == '__main__':

@@ -1,3 +1,5 @@
+import os
+
 def lowercase(source):
     if type(source) is str:
         return source.lower()
@@ -50,4 +52,20 @@ def index_max(items):
         return max(range(len(items)), key=items.__getitem__)
     return None
 
+
+def ensure_dir_exists(dir_path):
+    if os.path.exists(dir_path) is False or\
+            os.path.isdir(dir_path) is False:
+                os.makedirs(dir_path)
+
+
+def does_file_exist(file_path):
+    return os.path.exists(file_path) and os.path.isfile(file_path)
+
+
+def drange(start, stop, step):
+    r = start
+    while r < stop:
+        yield r
+        r += step
 
